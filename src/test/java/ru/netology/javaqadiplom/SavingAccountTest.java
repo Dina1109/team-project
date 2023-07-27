@@ -124,6 +124,22 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void shouldPayAmountIfBalanceLessThanMinBalance() {
+        SavingAccount account = new SavingAccount(
+                500,
+                1_000,
+                10_000,
+                5
+        );
+        account.pay(300);
+
+        int expected = 200;
+        int actual = account.getBalance();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldAdd() {
         SavingAccount account = new SavingAccount(
                 2_000,
